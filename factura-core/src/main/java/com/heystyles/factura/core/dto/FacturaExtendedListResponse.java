@@ -1,7 +1,6 @@
 package com.heystyles.factura.core.dto;
 
 import com.heystyles.common.types.ListResponse;
-import com.heystyles.common.types.ObjectResponse;
 import com.heystyles.factura.core.domain.FacturaExtended;
 
 import java.util.List;

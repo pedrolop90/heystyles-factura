@@ -1,6 +1,8 @@
 package com.heystyles.factura.api.config;
 
 import com.heystyles.common.response.ClientResponseErrorHandler;
+import com.heystyles.producto.cliente.MarcaProductoClient;
+import com.heystyles.producto.cliente.impl.MarcaProductoClientImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -20,5 +22,10 @@ public class ClientConfig {
                 .setReadTimeout(clientProperties.getReadTimeout())
                 .errorHandler(new ClientResponseErrorHandler())
                 .build();
+    }
+
+    @Bean
+    public MarcaProductoClient marcaProductoClient(RestTemplate restTemplate) {
+        return new MarcaProductoClientImpl(clientProperties.getProductoUrlBase(), restTemplate);
     }
 }

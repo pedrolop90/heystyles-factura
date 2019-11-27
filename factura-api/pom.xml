@@ -36,6 +36,16 @@
             <artifactId>usuarios-core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.heystyles</groupId>
+            <artifactId>producto-core</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.heystyles</groupId>
+            <artifactId>producto-cliente</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- Spring WEB -->
         <dependency>
