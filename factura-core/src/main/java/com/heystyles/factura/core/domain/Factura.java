@@ -1,7 +1,9 @@
 package com.heystyles.factura.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.heystyles.common.types.DomainBean;
+import com.heystyles.common.util.Constants;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -20,6 +22,7 @@ public class Factura extends DomainBean<Long> {
 
     private Double porcentajeDescuento;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.FORMAT_DATE_TIME)
     private LocalDateTime fechaLimitePago;
 
     @Override
