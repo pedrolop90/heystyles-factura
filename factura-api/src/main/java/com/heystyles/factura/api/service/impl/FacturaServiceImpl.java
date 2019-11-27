@@ -41,14 +41,14 @@ public class FacturaServiceImpl
     @Override
     public Long insert(FacturaRequest request) {
         Long id = super.insert(request.getFactura());
-        gestionProductoService.upsert(id, request.getMarcaProducto());
+        gestionProductoService.upsert(id, request.getGestionProductos());
         return id;
     }
 
     @Override
     public void update(FacturaRequest request) {
         super.update(request.getFactura());
-        gestionProductoService.upsert(request.getFactura().getId(), request.getMarcaProducto());
+        gestionProductoService.upsert(request.getFactura().getId(), request.getGestionProductos());
     }
 
     @Override

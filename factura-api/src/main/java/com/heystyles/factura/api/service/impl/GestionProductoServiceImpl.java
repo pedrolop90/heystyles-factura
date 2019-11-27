@@ -1,9 +1,11 @@
 package com.heystyles.factura.api.service.impl;
 
+import com.heystyles.common.service.ConverterService;
 import com.heystyles.factura.api.dao.GestionProductoDao;
 import com.heystyles.factura.api.entity.FacturaEntity;
 import com.heystyles.factura.api.entity.GestionProductoEntity;
 import com.heystyles.factura.api.service.GestionProductoService;
+import com.heystyles.factura.core.domain.GestionProducto;
 import com.heystyles.producto.cliente.MarcaProductoClient;
 import com.heystyles.producto.core.dto.MarcaProductoDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,12 @@ public class GestionProductoServiceImpl implements GestionProductoService {
     @Autowired
     private MarcaProductoClient marcaProductoClient;
 
+    @Autowired
+    private ConverterService converterService;
+
     @Override
-    public void upsert(Long facturaId, List<Long> marcasProductos) {
-        if (marcasProductos == null) {
+    public void upsert(Long facturaId, List<GestionProducto> gestionProductos) {
+        if (gestionProductos == null) {
             return;
         }
         List<GestionProductoEntity> existing = gestionProductoDao.findByFacturaId(facturaId);
@@ -38,16 +43,20 @@ public class GestionProductoServiceImpl implements GestionProductoService {
                 .map(e -> e.getMarcaProductoId())
                 .collect(Collectors.toSet());
 
+        Set<Long> marcasProductosIds = gestionProductos
+                .stream()
+                .map(e -> e.getMarcaProductoId())
+                .collect(Collectors.toSet());
+
         existing.stream()
-                .filter(p -> !marcasProductos.contains(p.getMarcaProductoId()))
+                .filter(p -> !marcasProductosIds.contains(p.getMarcaProductoId()))
                 .forEach(p -> toDelete.add(p));
 
-        marcasProductos.stream()
-                .filter(l -> !oldMarcasIds.contains(l))
+        gestionProductos.stream()
+                .filter(l -> !oldMarcasIds.contains(l.getMarcaProductoId()))
                 .forEach(l -> {
-                    GestionProductoEntity entity = new GestionProductoEntity();
+                    GestionProductoEntity entity = converterService.convertTo(l, GestionProductoEntity.class);
                     entity.setFactura(new FacturaEntity(facturaId));
-                    entity.setMarcaProductoId(l);
                     toSave.add(entity);
                 });
 

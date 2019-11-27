@@ -1,6 +1,7 @@
 package com.heystyles.factura.core.dto;
 
 import com.heystyles.factura.core.domain.Factura;
+import com.heystyles.factura.core.domain.GestionProducto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -12,7 +13,7 @@ public class FacturaRequest {
     @Valid
     private Factura factura;
 
-    private List<Long> marcaProducto;
+    private List<GestionProducto> gestionProductos;
 
     public Factura getFactura() {
         return factura;
@@ -22,11 +23,11 @@ public class FacturaRequest {
         this.factura = factura;
     }
 
-    public List<Long> getMarcaProducto() {
-        return marcaProducto;
+    public List<GestionProducto> getGestionProductos() {
+        return gestionProductos;
     }
 
-    public void setMarcaProducto(List<Long> marcaProducto) {
-        this.marcaProducto = marcaProducto;
+    public void setGestionProductos(List<GestionProducto> gestionProductos) {
+        this.gestionProductos = gestionProductos;
     }
 }
