@@ -14,6 +14,12 @@ public class ClientProperties {
     @NotNull
     private String seguridadUrlBase;
 
+    @NotNull
+    private String usuariosUrlBase;
+
+    @NotNull
+    private String productoUrlBase;
+
     private int connectionTimeout;
 
     private int readTimeout;
@@ -24,6 +30,22 @@ public class ClientProperties {
 
     public void setSeguridadUrlBase(String seguridadUrlBase) {
         this.seguridadUrlBase = seguridadUrlBase;
+    }
+
+    public String getUsuariosUrlBase() {
+        return usuariosUrlBase;
+    }
+
+    public void setUsuariosUrlBase(String usuariosUrlBase) {
+        this.usuariosUrlBase = usuariosUrlBase;
+    }
+
+    public String getProductoUrlBase() {
+        return productoUrlBase;
+    }
+
+    public void setProductoUrlBase(String productoUrlBase) {
+        this.productoUrlBase = productoUrlBase;
     }
 
     public int getConnectionTimeout() {
