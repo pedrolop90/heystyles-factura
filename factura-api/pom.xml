@@ -15,7 +15,7 @@
 
 
     <properties>
-        <start-class>com.heystyles.factura.api.ProductoUsuariosAppApp</start-class>
+        <start-class>com.heystyles.factura.api.FacturaApp</start-class>
     </properties>
 
 
