@@ -19,7 +19,7 @@ import java.util.List;
 import static org.springframework.context.i18n.LocaleContextHolder.getLocale;
 
 @Component
-public class AbonoAcumuladoFacturaValidator implements Validator<Abono> {
+public class AbonoValorMayorFacturaValidator implements Validator<Abono> {
 
     @Autowired
     private FacturaService facturaService;
