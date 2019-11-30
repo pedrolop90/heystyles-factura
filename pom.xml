@@ -7,12 +7,12 @@
     <groupId>com.heystyles</groupId>
     <artifactId>factura</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <modules>
         <module>factura-api</module>
         <module>factura-core</module>
         <module>factura-cliente</module>
     </modules>
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

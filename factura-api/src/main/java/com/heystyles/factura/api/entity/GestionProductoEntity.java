@@ -56,7 +56,7 @@ public class GestionProductoEntity extends AuditableWithAuthorEntity<Long> imple
     @Column(name = "cantidad", nullable = false)
     private Long cantidad;
 
-    @Column(name = "estadoEntrada")
+    @Column(name = "estado_entrada")
     @Enumerated(value = EnumType.STRING)
     private EstadoEntrada estadoEntrada;
 
