@@ -6,4 +6,6 @@ public interface MessageKeys extends com.heystyles.common.util.MessageKeys {
 
     String GESTION_PRODUCTO_NOT_FOUND = "heystyles.factura.gestion-producto.not-found";
 
+    String ABONO_NOT_FOUND = "heystyles.factura.abono.not-found";
+
 }

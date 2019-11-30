@@ -4,7 +4,6 @@ import com.heystyles.common.response.Responses;
 import com.heystyles.common.types.BaseResponse;
 import com.heystyles.common.types.IdResponse;
 import com.heystyles.factura.api.service.FacturaService;
-import com.heystyles.factura.api.service.GestionProductoService;
 import com.heystyles.factura.core.domain.FacturaExtended;
 import com.heystyles.factura.core.dto.FacturaExtendedListResponse;
 import com.heystyles.factura.core.dto.FacturaExtendedResponse;
@@ -38,9 +37,6 @@ public class FacturaController {
     @Autowired
     private FacturaService facturaService;
 
-    @Autowired
-    private GestionProductoService gestionProductoService;
-
     @ApiOperation(value = "Permite Crear una Factura en la base de datos.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Factura Creada.")
@@ -48,8 +44,8 @@ public class FacturaController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<IdResponse> insert(
-            @NotNull @Valid @RequestBody FacturaRequest re) {
-        return Responses.responseEntity(new IdResponse(facturaService.insert(re)));
+            @NotNull @Valid @RequestBody FacturaRequest request) {
+        return Responses.responseEntity(new IdResponse(facturaService.insert(request)));
     }
 
     @ApiOperation(value = "Permite actualizar una Factura en la base de datos")

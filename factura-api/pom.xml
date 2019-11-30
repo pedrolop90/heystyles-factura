@@ -51,6 +51,7 @@
             <artifactId>usuarios-cliente</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+
         <!-- Spring WEB -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
