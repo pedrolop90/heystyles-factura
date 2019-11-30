@@ -13,6 +13,7 @@ public class FacturaRequest {
     @Valid
     private Factura factura;
 
+    @Valid
     private List<GestionProducto> gestionProductos;
 
     public Factura getFactura() {
