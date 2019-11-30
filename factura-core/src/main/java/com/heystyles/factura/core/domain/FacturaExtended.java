@@ -1,12 +1,12 @@
 package com.heystyles.factura.core.domain;
 
-import com.heystyles.usuarios.core.domain.Proveedor;
+import com.heystyles.usuarios.core.domain.ProveedorExtended;
 
 public class FacturaExtended {
 
     private Factura factura;
 
-    private Proveedor proveedor;
+    private ProveedorExtended proveedor;
 
     public Factura getFactura() {
         return factura;
@@ -16,11 +16,11 @@ public class FacturaExtended {
         this.factura = factura;
     }
 
-    public Proveedor getProveedor() {
+    public ProveedorExtended getProveedor() {
         return proveedor;
     }
 
-    public void setProveedor(Proveedor proveedor) {
+    public void setProveedor(ProveedorExtended proveedor) {
         this.proveedor = proveedor;
     }
 }
