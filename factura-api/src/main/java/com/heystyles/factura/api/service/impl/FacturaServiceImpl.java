@@ -52,7 +52,7 @@ public class FacturaServiceImpl
     }
 
     @Override
-    public FacturaExtended getFactura(Long facturaId) {
+    public FacturaExtended getFacturaExtended(Long facturaId) {
         FacturaEntity entity = Optional.ofNullable(facturaDao.findOne(facturaId))
                 .orElseThrow(() -> APIExceptions.objetoNoEncontrado(
                         messageSource.getMessage(MessageKeys.FACTURA_NOT_FOUND,
@@ -60,6 +60,16 @@ public class FacturaServiceImpl
                                 getLocale())
                 ));
         return getConverterService().convertTo(entity, FacturaExtended.class);
+    }
+
+    @Override
+    public Factura getFactura(Long facturaId) {
+        return Optional.ofNullable(findById(facturaId))
+                .orElseThrow(() -> APIExceptions.objetoNoEncontrado(
+                        messageSource.getMessage(MessageKeys.FACTURA_NOT_FOUND,
+                                new String[]{String.valueOf(facturaId)},
+                                getLocale())
+                ));
     }
 
     @Override

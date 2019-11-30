@@ -33,6 +33,7 @@ public class AbonoEntity extends AuditableWithAuthorEntity<Long> implements Soft
         String FACTURA = "factura";
         String FACTURA_ID = FACTURA + "." + FacturaEntity.Attributes.ID;
         String USUARIO_ID = "usuario_id";
+        String VALOR = "valor";
     }
 
     @Id

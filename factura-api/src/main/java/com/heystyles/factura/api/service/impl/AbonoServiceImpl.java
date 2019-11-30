@@ -7,13 +7,17 @@ import com.heystyles.factura.api.dao.AbonoDao;
 import com.heystyles.factura.api.entity.AbonoEntity;
 import com.heystyles.factura.api.message.MessageKeys;
 import com.heystyles.factura.api.service.AbonoService;
+import com.heystyles.factura.api.service.FacturaService;
 import com.heystyles.factura.core.domain.Abono;
+import com.heystyles.factura.core.domain.Factura;
 import com.heystyles.factura.core.dto.AbonoListResponse;
 import com.heystyles.factura.core.filter.AbonoFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -27,11 +31,28 @@ public class AbonoServiceImpl
     private AbonoDao abonoDao;
 
     @Autowired
+    private FacturaService facturaService;
+
+    @Autowired
     private MessageSource messageSource;
 
     @Override
     protected CrudRepository<AbonoEntity, Long> getDao() {
         return abonoDao;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public Long insert(Abono bean) {
+        Long id = super.insert(bean);
+        Double valorActualAcumulado = abonoDao.sumAbonosByFacturaId(bean.getFacturaId());
+        Double valorTotal = valorActualAcumulado + bean.getValor();
+        Factura factura = facturaService.getFactura(bean.getFacturaId());
+        if (valorTotal.compareTo(factura.getValorTotal()) >= 0) {
+            factura.setfPago(true);
+            facturaService.update(factura);
+        }
+        return id;
     }
 
     @Override

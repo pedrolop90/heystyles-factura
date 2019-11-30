@@ -8,4 +8,6 @@ public interface AbonoCustonDao {
 
     Page<AbonoEntity> getPage(AbonoFilter filter);
 
+    Double sumAbonosByFacturaId(Long facturaId);
+
 }

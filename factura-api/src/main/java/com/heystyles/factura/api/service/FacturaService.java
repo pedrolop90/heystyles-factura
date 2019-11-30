@@ -13,7 +13,9 @@ public interface FacturaService extends Service<Factura, Long> {
 
     void update(FacturaRequest request);
 
-    FacturaExtended getFactura(Long facturaId);
+    FacturaExtended getFacturaExtended(Long facturaId);
+
+    Factura getFactura(Long facturaId);
 
     List<FacturaExtended> getFacturas();
 }

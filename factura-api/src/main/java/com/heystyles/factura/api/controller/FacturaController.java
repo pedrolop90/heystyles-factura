@@ -79,7 +79,7 @@ public class FacturaController {
     @GetMapping(value = "/{facturaId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FacturaExtendedResponse> getFactura(
             @NotNull @PathVariable(name = "facturaId") Long facturaId) {
-        return Responses.responseEntity(new FacturaExtendedResponse(facturaService.getFactura(facturaId)));
+        return Responses.responseEntity(new FacturaExtendedResponse(facturaService.getFacturaExtended(facturaId)));
     }
 
     @ApiOperation(value = "Permite Listar todas las Facturas de la base de datos")

@@ -73,4 +73,13 @@ public class AbonoDaoImpl implements AbonoCustonDao {
             criteria.setMaxResults(pageSize);
         }
     }
+
+    @Override
+    public Double sumAbonosByFacturaId(Long facturaId) {
+        Session session = entityManager.unwrap(Session.class);
+        Criteria criteria = session.createCriteria(AbonoEntity.class);
+        criteria.add(Restrictions.eq(AbonoEntity.Attributes.FACTURA_ID, facturaId));
+        criteria.setProjection(Projections.sum(AbonoEntity.Attributes.VALOR));
+        return (Double) criteria.uniqueResult();
+    }
 }
