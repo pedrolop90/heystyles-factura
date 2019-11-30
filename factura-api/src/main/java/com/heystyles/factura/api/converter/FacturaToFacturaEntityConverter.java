@@ -42,6 +42,7 @@ public class FacturaToFacturaEntityConverter implements Converter<Factura, Factu
         entity.setPorcentaje(bean.getPorcentaje());
         entity.setPorcentajeDescuento(bean.getPorcentajeDescuento());
         entity.setFechaLimitePago(bean.getFechaLimitePago());
+        entity.setfPago(bean.isfPago());
         return entity;
     }
 }

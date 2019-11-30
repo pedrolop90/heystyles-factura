@@ -50,6 +50,8 @@ public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements So
     @Convert(converter = LocalDateTimeAttributeConverter.class)
     private LocalDateTime fechaLimitePago;
 
+    @Column(name = "flag_pago", nullable = false)
+    private boolean fPago;
 
     @Column(name = "s_delete", nullable = false)
     private boolean delete;
@@ -176,6 +178,14 @@ public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements So
     @Override
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public boolean isfPago() {
+        return fPago;
+    }
+
+    public void setfPago(boolean fPago) {
+        this.fPago = fPago;
     }
 
     @Override
