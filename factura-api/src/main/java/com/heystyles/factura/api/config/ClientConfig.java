@@ -33,6 +33,6 @@ public class ClientConfig {
 
     @Bean
     public ProveedorClient proveedorClient(RestTemplate restTemplate) {
-        return new ProveedorClientImpl(clientProperties.getProductoUrlBase(), restTemplate);
+        return new ProveedorClientImpl(clientProperties.getUsuariosUrlBase(), restTemplate);
     }
 }
