@@ -14,6 +14,5 @@ public interface GestionProductoService {
 
     List<GestionProductoExtended> getGestionProductoExtendedByFacturaId(Long facturaId);
 
-
     GestionProductoExtended getGestionProductoExtended(Long gestionProductoId);
 }

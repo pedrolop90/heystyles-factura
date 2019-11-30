@@ -26,4 +26,13 @@ public class GestionProductoDaoImpl implements GestionProductoCustomDao {
         criteria.setProjection(Projections.property(GestionProductoEntity.Attributes.MARCA_PRODUCTO_ID));
         return criteria.list();
     }
+
+    @Override
+    public Double valorTotalGestionProductoByFacturaId(Long facturaId) {
+        Session session = entityManager.unwrap(Session.class);
+        Criteria criteria = session.createCriteria(GestionProductoEntity.class);
+        criteria.add(Restrictions.eq(GestionProductoEntity.Attributes.FACTURA_ID, facturaId));
+        criteria.setProjection(Projections.sum(GestionProductoEntity.Attributes.VALOR));
+        return (Double) criteria.uniqueResult();
+    }
 }

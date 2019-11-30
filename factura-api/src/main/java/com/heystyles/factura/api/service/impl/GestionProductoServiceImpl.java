@@ -82,4 +82,6 @@ public class GestionProductoServiceImpl implements GestionProductoService {
         GestionProductoEntity gestionProductoEntity = gestionProductoDao.findOne(gestionProductoId);
         return converterService.convertTo(gestionProductoEntity, GestionProductoExtended.class);
     }
+
+
 }

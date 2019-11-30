@@ -3,6 +3,7 @@ package com.heystyles.factura.api.service.impl;
 import com.heystyles.common.exception.APIExceptions;
 import com.heystyles.common.service.impl.ServiceImpl;
 import com.heystyles.factura.api.dao.FacturaDao;
+import com.heystyles.factura.api.dao.GestionProductoDao;
 import com.heystyles.factura.api.entity.FacturaEntity;
 import com.heystyles.factura.api.message.MessageKeys;
 import com.heystyles.factura.api.service.FacturaService;
@@ -31,6 +32,9 @@ public class FacturaServiceImpl
     private GestionProductoService gestionProductoService;
 
     @Autowired
+    private GestionProductoDao gestionProductoDao;
+
+    @Autowired
     private MessageSource messageSource;
 
     @Override
@@ -40,8 +44,13 @@ public class FacturaServiceImpl
 
     @Override
     public Long insert(FacturaRequest request) {
-        Long id = super.insert(request.getFactura());
+        Factura factura = request.getFactura();
+        Long id = super.insert(factura);
         gestionProductoService.upsert(id, request.getGestionProductos());
+        Double valorTotal = gestionProductoDao.valorTotalGestionProductoByFacturaId(id);
+        factura.setId(id);
+        factura.setValorTotal(valorTotal);
+        super.update(factura);
         return id;
     }
 

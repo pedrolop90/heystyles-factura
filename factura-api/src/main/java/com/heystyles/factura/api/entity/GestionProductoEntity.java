@@ -36,6 +36,7 @@ public class GestionProductoEntity extends AuditableWithAuthorEntity<Long> imple
         String FACTURA = "factura";
         String FACTURA_ID = FACTURA + "." + FacturaEntity.Attributes.ID;
         String MARCA_PRODUCTO_ID = "marcaProductoId";
+        String VALOR = "valor";
     }
 
     @Id
