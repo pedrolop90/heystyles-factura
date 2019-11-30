@@ -50,10 +50,10 @@ public class GestionProductoEntity extends AuditableWithAuthorEntity<Long> imple
     @JoinColumn(name = "id_factura", nullable = false)
     private FacturaEntity factura;
 
-    @Column(name = "valor")
+    @Column(name = "valor", nullable = false)
     private Double valor;
 
-    @Column(name = "cantidad")
+    @Column(name = "cantidad", nullable = false)
     private Long cantidad;
 
     @Column(name = "estadoEntrada")

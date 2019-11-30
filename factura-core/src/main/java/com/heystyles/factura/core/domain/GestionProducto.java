@@ -14,8 +14,10 @@ public class GestionProducto extends DomainBean<Long> {
     @NotNull
     private Long marcaProductoId;
 
+    @NotNull
     private Double valor;
 
+    @NotNull
     private Long cantidad;
 
     private EstadoEntrada estadoEntrada;
