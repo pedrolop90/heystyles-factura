@@ -12,9 +12,6 @@ import javax.validation.constraints.NotNull;
 public class ClientProperties {
 
     @NotNull
-    private String seguridadUrlBase;
-
-    @NotNull
     private String usuariosUrlBase;
 
     @NotNull
@@ -23,14 +20,6 @@ public class ClientProperties {
     private int connectionTimeout;
 
     private int readTimeout;
-
-    public String getSeguridadUrlBase() {
-        return seguridadUrlBase;
-    }
-
-    public void setSeguridadUrlBase(String seguridadUrlBase) {
-        this.seguridadUrlBase = seguridadUrlBase;
-    }
 
     public String getUsuariosUrlBase() {
         return usuariosUrlBase;
