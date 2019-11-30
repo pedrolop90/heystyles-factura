@@ -31,7 +31,7 @@ public class AbonoServiceImpl
 
     @Override
     protected CrudRepository<AbonoEntity, Long> getDao() {
-        return null;
+        return abonoDao;
     }
 
     @Override
