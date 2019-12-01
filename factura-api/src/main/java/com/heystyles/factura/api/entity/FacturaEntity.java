@@ -27,6 +27,8 @@ import java.time.LocalDateTime;
 public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements SoftDeletable {
 
     public interface Attributes extends AuditableWithAuthorEntity.Attributes {
+        String PORCENTAJE_DESCUENTO = "porcentajeDescuento";
+        String PORCENTAJE_IVA = "porcentajeIva";
     }
 
     @Id
@@ -38,13 +40,13 @@ public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements So
     private Long proveedorId;
 
     @Column(name = "valor_total")
-    private Double valorTotal;
+    private double valorTotal;
 
-    @Column(name = "porcentaje")
-    private Double porcentaje;
+    @Column(name = "porcentaje_iva")
+    private double porcentajeIva;
 
     @Column(name = "porcentaje_descuento")
-    private Double porcentajeDescuento;
+    private double porcentajeDescuento;
 
     @Column(name = "fecha_limite_pago")
     @Convert(converter = LocalDateTimeAttributeConverter.class)
@@ -108,12 +110,12 @@ public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements So
         this.valorTotal = valorTotal;
     }
 
-    public Double getPorcentaje() {
-        return porcentaje;
+    public Double getPorcentajeIva() {
+        return porcentajeIva;
     }
 
-    public void setPorcentaje(Double porcentaje) {
-        this.porcentaje = porcentaje;
+    public void setPorcentajeIva(Double porcentajeIva) {
+        this.porcentajeIva = porcentajeIva;
     }
 
     public Double getPorcentajeDescuento() {

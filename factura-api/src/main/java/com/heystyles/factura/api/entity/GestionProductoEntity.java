@@ -35,8 +35,12 @@ public class GestionProductoEntity extends AuditableWithAuthorEntity<Long> imple
     public interface Attributes extends AuditableWithAuthorEntity.Attributes {
         String FACTURA = "factura";
         String FACTURA_ID = FACTURA + "." + FacturaEntity.Attributes.ID;
+        String FACTURA_PORCENTAJE_DESCUENTO = FACTURA + "." + FacturaEntity.Attributes.PORCENTAJE_DESCUENTO;
+        String FACTURA_PORCENTAJE_IVA = FACTURA + "." + FacturaEntity.Attributes.PORCENTAJE_IVA;
         String MARCA_PRODUCTO_ID = "marcaProductoId";
         String VALOR = "valor";
+        String CANTIDAD = "cantidad";
+        String PORCENTAJE_DESCUENTO = "porcentaDescuento";
     }
 
     @Id
@@ -52,17 +56,17 @@ public class GestionProductoEntity extends AuditableWithAuthorEntity<Long> imple
     private FacturaEntity factura;
 
     @Column(name = "valor", nullable = false)
-    private Double valor;
+    private double valor;
 
     @Column(name = "cantidad", nullable = false)
-    private Long cantidad;
+    private long cantidad;
 
     @Column(name = "estado_entrada")
     @Enumerated(value = EnumType.STRING)
     private EstadoEntrada estadoEntrada;
 
     @Column(name = "porcentaje_descuento")
-    private Double porcentaDescuento;
+    private double porcentaDescuento;
 
     @Column(name = "s_delete", nullable = false)
     private boolean delete;

@@ -18,7 +18,7 @@ public class Factura extends DomainBean<Long> {
 
     private Double valorTotal;
 
-    private Double porcentaje;
+    private Double porcentajeIva;
 
     private Double porcentajeDescuento;
 
@@ -53,12 +53,12 @@ public class Factura extends DomainBean<Long> {
         this.valorTotal = valorTotal;
     }
 
-    public Double getPorcentaje() {
-        return porcentaje;
+    public Double getPorcentajeIva() {
+        return porcentajeIva;
     }
 
-    public void setPorcentaje(Double porcentaje) {
-        this.porcentaje = porcentaje;
+    public void setPorcentajeIva(Double porcentajeIva) {
+        this.porcentajeIva = porcentajeIva;
     }
 
     public Double getPorcentajeDescuento() {
