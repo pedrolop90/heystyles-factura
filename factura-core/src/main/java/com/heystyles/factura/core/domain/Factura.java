@@ -25,6 +25,9 @@ public class Factura extends DomainBean<Long> {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.FORMAT_DATE_TIME)
     private LocalDateTime fechaLimitePago;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.FORMAT_DATE_TIME)
+    private LocalDateTime fechaCreacion;
+
     private boolean fPago;
 
     @Override
@@ -83,5 +86,13 @@ public class Factura extends DomainBean<Long> {
 
     public void setfPago(boolean fPago) {
         this.fPago = fPago;
+    }
+
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 }
