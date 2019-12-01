@@ -7,7 +7,6 @@ import com.heystyles.common.util.Constants;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Factura extends DomainBean<Long> {
@@ -26,8 +25,8 @@ public class Factura extends DomainBean<Long> {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.FORMAT_DATE)
     private LocalDate fechaLimitePago;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.FORMAT_DATE_TIME)
-    private LocalDateTime fechaCreacion;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.FORMAT_DATE)
+    private LocalDate fechaCreacion;
 
     private boolean fPago;
 
@@ -89,11 +88,11 @@ public class Factura extends DomainBean<Long> {
         this.fPago = fPago;
     }
 
-    public LocalDateTime getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 }
