@@ -1,5 +1,6 @@
 package com.heystyles.factura.api.entity;
 
+import com.heystyles.common.persistence.LocalDateAttributeConverter;
 import com.heystyles.common.persistence.LocalDateTimeAttributeConverter;
 import com.heystyles.common.types.AuditableWithAuthorEntity;
 import com.heystyles.common.types.SoftDeletable;
@@ -18,6 +19,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -49,8 +51,8 @@ public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements So
     private double porcentajeDescuento;
 
     @Column(name = "fecha_limite_pago")
-    @Convert(converter = LocalDateTimeAttributeConverter.class)
-    private LocalDateTime fechaLimitePago;
+    @Convert(converter = LocalDateAttributeConverter.class)
+    private LocalDate fechaLimitePago;
 
     @Column(name = "flag_pago", nullable = false)
     private boolean fPago;
@@ -126,11 +128,23 @@ public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements So
         this.porcentajeDescuento = porcentajeDescuento;
     }
 
-    public LocalDateTime getFechaLimitePago() {
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public void setPorcentajeIva(double porcentajeIva) {
+        this.porcentajeIva = porcentajeIva;
+    }
+
+    public void setPorcentajeDescuento(double porcentajeDescuento) {
+        this.porcentajeDescuento = porcentajeDescuento;
+    }
+
+    public LocalDate getFechaLimitePago() {
         return fechaLimitePago;
     }
 
-    public void setFechaLimitePago(LocalDateTime fechaLimitePago) {
+    public void setFechaLimitePago(LocalDate fechaLimitePago) {
         this.fechaLimitePago = fechaLimitePago;
     }
 
