@@ -10,4 +10,6 @@ public interface MessageKeys extends com.heystyles.common.util.MessageKeys {
 
     String ABONO_MAYOR_FACTURA_VALOR = "heystyles.factura.abono-valor.factura-valor";
 
+    String FACTURA_FECHA_MENOR_ACTUAL = "heystyles.factura.factura-fecha.menor-actual";
+
 }
