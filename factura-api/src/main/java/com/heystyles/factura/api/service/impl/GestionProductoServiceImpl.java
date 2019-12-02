@@ -42,7 +42,7 @@ public class GestionProductoServiceImpl
         }
         List<GestionProductoEntity> entities = converterService.convertTo(gestionProductos, GestionProductoEntity.class);
         entities.forEach(gestionProductoEntity -> {
-            gestionProductoEntity.setFactura(new FacturaEntity(facturaId));;
+            gestionProductoEntity.setFactura(new FacturaEntity(facturaId));
         });
         gestionProductoDao.save(entities);
     }
