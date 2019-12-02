@@ -14,7 +14,6 @@ public class FacturaEntityToFacturaConverter implements Converter<FacturaEntity,
         bean.setId(entity.getId());
         bean.setProveedorId(entity.getProveedorId());
         bean.setValorTotal(entity.getValorTotal());
-        bean.setPorcentajeIva(entity.getPorcentajeIva());
         bean.setPorcentajeDescuento(entity.getPorcentajeDescuento());
         bean.setFechaLimitePago(entity.getFechaLimitePago());
         bean.setfPago(entity.isfPago());

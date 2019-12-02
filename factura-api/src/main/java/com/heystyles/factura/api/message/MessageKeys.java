@@ -12,4 +12,6 @@ public interface MessageKeys extends com.heystyles.common.util.MessageKeys {
 
     String FACTURA_FECHA_MENOR_ACTUAL = "heystyles.factura.factura-fecha.menor-actual";
 
+    String PARAMETRO_GENERAL_NOT_FOUND = "heystyles.factura.parametro-general.not-found";
+
 }

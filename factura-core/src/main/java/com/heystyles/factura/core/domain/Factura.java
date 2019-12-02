@@ -23,10 +23,6 @@ public class Factura extends DomainBean<Long> {
 
     @Min(value = 0)
     @Max(value = 100)
-    private double porcentajeIva;
-
-    @Min(value = 0)
-    @Max(value = 100)
     private double porcentajeDescuento;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.FORMAT_DATE)
@@ -61,14 +57,6 @@ public class Factura extends DomainBean<Long> {
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
-    }
-
-    public Double getPorcentajeIva() {
-        return porcentajeIva;
-    }
-
-    public void setPorcentajeIva(Double porcentajeIva) {
-        this.porcentajeIva = porcentajeIva;
     }
 
     public Double getPorcentajeDescuento() {

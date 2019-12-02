@@ -36,7 +36,6 @@ public class GestionProductoEntity extends AuditableWithAuthorEntity<Long> imple
         String FACTURA = "factura";
         String FACTURA_ID = FACTURA + "." + FacturaEntity.Attributes.ID;
         String FACTURA_PORCENTAJE_DESCUENTO = FACTURA + "." + FacturaEntity.Attributes.PORCENTAJE_DESCUENTO;
-        String FACTURA_PORCENTAJE_IVA = FACTURA + "." + FacturaEntity.Attributes.PORCENTAJE_IVA;
         String MARCA_PRODUCTO_ID = "marcaProductoId";
         String VALOR = "valor";
         String CANTIDAD = "cantidad";

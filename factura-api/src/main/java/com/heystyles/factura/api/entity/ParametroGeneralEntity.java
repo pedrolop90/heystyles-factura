@@ -1,6 +1,5 @@
 package com.heystyles.factura.api.entity;
 
-import com.heystyles.common.persistence.LocalDateAttributeConverter;
 import com.heystyles.common.persistence.LocalDateTimeAttributeConverter;
 import com.heystyles.common.types.AuditableWithAuthorEntity;
 import com.heystyles.common.types.SoftDeletable;
@@ -19,18 +18,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "factura")
+@Table(name = "parametro_general")
 @EntityListeners(AuditingEntityListener.class)
 @Where(clause = "s_delete = 0")
-public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements SoftDeletable {
+public class ParametroGeneralEntity extends AuditableWithAuthorEntity<Long> implements SoftDeletable {
 
     public interface Attributes extends AuditableWithAuthorEntity.Attributes {
-        String PORCENTAJE_DESCUENTO = "porcentajeDescuento";
-        String PORCENTAJE_IVA = "porcentajeIva";
+
     }
 
     @Id
@@ -38,21 +35,11 @@ public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements So
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "id_proveedor", nullable = false)
-    private Long proveedorId;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
-    @Column(name = "valor_total")
-    private double valorTotal;
-
-    @Column(name = "porcentaje_descuento")
-    private double porcentajeDescuento;
-
-    @Column(name = "fecha_limite_pago")
-    @Convert(converter = LocalDateAttributeConverter.class)
-    private LocalDate fechaLimitePago;
-
-    @Column(name = "flag_pago", nullable = false)
-    private boolean fPago;
+    @Column(name = "valor", nullable = false)
+    private String valor;
 
     @Column(name = "s_delete", nullable = false)
     private boolean delete;
@@ -75,14 +62,6 @@ public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements So
     @Column(name = "updated_by")
     private String updatedBy;
 
-    public FacturaEntity() {
-
-    }
-
-    public FacturaEntity(Long id) {
-        setId(id);
-    }
-
     @Override
     public Long getId() {
         return id;
@@ -93,44 +72,20 @@ public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements So
         this.id = id;
     }
 
-    public Long getProveedorId() {
-        return proveedorId;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setProveedorId(Long proveedorId) {
-        this.proveedorId = proveedorId;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Double getValorTotal() {
-        return valorTotal;
+    public String getValor() {
+        return valor;
     }
 
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public Double getPorcentajeDescuento() {
-        return porcentajeDescuento;
-    }
-
-    public void setPorcentajeDescuento(Double porcentajeDescuento) {
-        this.porcentajeDescuento = porcentajeDescuento;
-    }
-
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public void setPorcentajeDescuento(double porcentajeDescuento) {
-        this.porcentajeDescuento = porcentajeDescuento;
-    }
-
-    public LocalDate getFechaLimitePago() {
-        return fechaLimitePago;
-    }
-
-    public void setFechaLimitePago(LocalDate fechaLimitePago) {
-        this.fechaLimitePago = fechaLimitePago;
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 
     public boolean isDelete() {
@@ -179,14 +134,6 @@ public class FacturaEntity extends AuditableWithAuthorEntity<Long> implements So
     @Override
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
-    }
-
-    public boolean isfPago() {
-        return fPago;
-    }
-
-    public void setfPago(boolean fPago) {
-        this.fPago = fPago;
     }
 
     @Override
