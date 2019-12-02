@@ -4,6 +4,7 @@ package com.heystyles.factura.core.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.heystyles.common.types.DomainBean;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Min;
 
@@ -17,16 +18,17 @@ public class GestionProducto extends DomainBean<Long> {
 
     @NotNull
     @Min(value = 0)
-    private Double valor;
+    private double valor;
 
     @NotNull
     @Min(value = 0)
-    private Long cantidad;
+    private long cantidad;
 
     private EstadoEntrada estadoEntrada;
 
     @Min(value = 0)
-    private Double porcentajeDescuento;
+    @Max(value = 100)
+    private double porcentajeDescuento;
 
     @Override
     public Long getId() {

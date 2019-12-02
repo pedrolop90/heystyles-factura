@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.heystyles.common.types.DomainBean;
 import com.heystyles.common.util.Constants;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -16,10 +18,15 @@ public class Factura extends DomainBean<Long> {
     @NotNull
     private Long proveedorId;
 
+    @Min(value = 0)
     private double valorTotal;
 
+    @Min(value = 0)
+    @Max(value = 100)
     private double porcentajeIva;
 
+    @Min(value = 0)
+    @Max(value = 100)
     private double porcentajeDescuento;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.FORMAT_DATE)
