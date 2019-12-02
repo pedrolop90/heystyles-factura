@@ -5,6 +5,7 @@ import com.heystyles.common.types.BaseResponse;
 import com.heystyles.common.types.IdResponse;
 import com.heystyles.factura.api.service.ParametroGeneralService;
 import com.heystyles.factura.core.domain.ParametroGeneral;
+import com.heystyles.factura.core.domain.ParametroGeneralEnum;
 import com.heystyles.factura.core.dto.ParametroGeneralListResponse;
 import com.heystyles.factura.core.dto.ParametroGeneralResponse;
 import io.swagger.annotations.Api;
@@ -91,5 +92,15 @@ public class ParametroGeneralController {
         return Responses.responseEntity(new ParametroGeneralListResponse(parametroGeneralService.findAll()));
     }
 
+    @ApiOperation(value = "Permite Saber el valor del porcentaje del iva, dado el parametro general.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "ParametroGeneral Encontrada."),
+            @ApiResponse(code = 404, message = "ParametroGeneral no encontrada.")
+    })
+    @GetMapping(value = "/porcentaje-iva", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ParametroGeneralResponse> getPorcentajeIva() {
+        return Responses.responseEntity(new ParametroGeneralResponse(
+                parametroGeneralService.getParametroGeneralByEnum(ParametroGeneralEnum.VALOR_IVA)));
+    }
 
 }
