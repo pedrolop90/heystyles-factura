@@ -16,11 +16,11 @@ public class Factura extends DomainBean<Long> {
     @NotNull
     private Long proveedorId;
 
-    private Double valorTotal;
+    private double valorTotal;
 
-    private Double porcentajeIva;
+    private double porcentajeIva;
 
-    private Double porcentajeDescuento;
+    private double porcentajeDescuento;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = Constants.FORMAT_DATE)
     private LocalDate fechaLimitePago;

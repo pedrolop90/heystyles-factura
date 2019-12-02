@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.heystyles.common.types.DomainBean;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GestionProducto extends DomainBean<Long> {
@@ -15,13 +16,16 @@ public class GestionProducto extends DomainBean<Long> {
     private Long marcaProductoId;
 
     @NotNull
+    @Min(value = 0)
     private Double valor;
 
     @NotNull
+    @Min(value = 0)
     private Long cantidad;
 
     private EstadoEntrada estadoEntrada;
 
+    @Min(value = 0)
     private Double porcentajeDescuento;
 
     @Override

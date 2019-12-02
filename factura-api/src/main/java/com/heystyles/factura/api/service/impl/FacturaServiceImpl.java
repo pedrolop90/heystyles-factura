@@ -56,8 +56,14 @@ public class FacturaServiceImpl
 
     @Override
     public void update(FacturaRequest request) {
-        super.update(request.getFactura());
-        gestionProductoService.upsert(request.getFactura().getId(), request.getGestionProductos());
+        Factura factura = request.getFactura();
+        Long id = factura.getId();
+        super.update(factura);
+        gestionProductoService.upsert(id, request.getGestionProductos());
+        Double valorTotal = gestionProductoDao.valorTotalGestionProductoByFacturaId(id);
+        factura.setId(id);
+        factura.setValorTotal(valorTotal);
+        super.update(factura);
     }
 
     @Override
