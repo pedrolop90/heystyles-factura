@@ -3,6 +3,8 @@ package com.heystyles.factura.core.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.heystyles.common.types.DomainBean;
 
+import javax.validation.constraints.Min;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Abono extends DomainBean<Long> {
 
@@ -12,7 +14,8 @@ public class Abono extends DomainBean<Long> {
 
     private Long usuarioId;
 
-    private Double valor;
+    @Min(value = 0)
+    private double valor;
 
     @Override
     public Long getId() {
