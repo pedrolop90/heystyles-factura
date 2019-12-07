@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GestionProductoServiceImpl
@@ -40,11 +42,36 @@ public class GestionProductoServiceImpl
         if (gestionProductos == null) {
             return;
         }
-        List<GestionProductoEntity> entities = converterService.convertTo(gestionProductos, GestionProductoEntity.class);
-        entities.forEach(gestionProductoEntity -> {
-            gestionProductoEntity.setFactura(new FacturaEntity(facturaId));
-        });
-        gestionProductoDao.save(entities);
+        List<GestionProductoEntity> existing = gestionProductoDao.findByFacturaId(facturaId);
+
+        List<GestionProductoEntity> toDelete = new ArrayList<>();
+        List<GestionProductoEntity> toSave = new ArrayList<>();
+
+        List<Long> oldMarcasIds = existing
+                .stream()
+                .map(e -> e.getId())
+                .collect(Collectors.toList());
+
+        List<Long> gestionProductosIds = gestionProductos
+                .stream()
+                .filter(p -> p.getId() != null)
+                .map(e -> e.getId())
+                .collect(Collectors.toList());
+
+        existing.stream()
+                .filter(p -> !gestionProductosIds.contains(p.getId()))
+                .forEach(p -> toDelete.add(p));
+
+        for (GestionProducto gestionProducto : gestionProductos) {
+            if (gestionProducto.getId() == null || !oldMarcasIds.contains(gestionProducto.getId())) {
+                GestionProductoEntity entity = converterService.convertTo(gestionProducto, GestionProductoEntity.class);
+                entity.setFactura(new FacturaEntity(facturaId));
+                toSave.add(entity);
+            }
+        }
+
+        gestionProductoDao.delete(toDelete);
+        gestionProductoDao.save(toSave);
     }
 
     @Override
