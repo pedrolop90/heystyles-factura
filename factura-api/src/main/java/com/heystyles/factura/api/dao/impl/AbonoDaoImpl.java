@@ -48,7 +48,7 @@ public class AbonoDaoImpl implements AbonoCustonDao {
         if (filter.getFacturaId() != null) {
             criteria.add(Restrictions.eq(AbonoEntity.Attributes.FACTURA_ID, filter.getFacturaId()));
         }
-        if (filter.getFacturaId() != null) {
+        if (filter.getUsuarioId() != null) {
             criteria.add(Restrictions.eq(AbonoEntity.Attributes.USUARIO_ID, filter.getUsuarioId()));
         }
         if (filter.getFechaInicial() != null) {
